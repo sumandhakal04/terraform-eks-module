@@ -12,3 +12,23 @@ module "vpc_agribora" {
 
   tags = data.aws_default_tags.default_global_tags.tags
 }
+
+module "eks" {
+  source                                   = "./modules/eks"
+  cluster_name                             = "${var.project}-cluster-${var.environment}"
+  max_instance_count                       = var.max_instance_count
+  min_instance_count                       = var.min_instance_count
+  desired_instance_count                   = var.desired_instance_count
+  instance_type                            = var.instance_type
+  cluster_version                          = var.cluster_version
+  vpc_id                                   = module.vpc_agribora.vpc_id
+  private_subnets                          = module.vpc_agribora.private_subnets
+  eks_managed_node_group_defaults_ami_type = var.eks_managed_node_group_defaults_ami_type
+  account_id                               = data.aws_caller_identity.current.account_id
+  project                                  = var.project
+  environment                              = var.environment
+  node_name                                = var.node_name
+  kms_key_arn = aws_kms_alias.kms_alias_eks.arn
+
+  tags = data.aws_default_tags.default_global_tags.tags
+}
