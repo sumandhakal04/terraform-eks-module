@@ -50,9 +50,11 @@ Thumbs.db
 
 */.decrypted*
 
+kubeconfig*.yaml
+
 terraform/.terraform/*
 terraform/.terraform*
 
-kubeconfig*.yaml
-
+tfvars/*
+*.tfvars
 terraform_output.json
