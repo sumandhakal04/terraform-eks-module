@@ -68,3 +68,21 @@ variable "eks_managed_node_group_defaults_ami_type" {
   type = string
 }
 
+# Elastic container registry
+
+variable "registry_name" {
+  description = "Name of the repository."
+  type        = list(string)
+}
+
+variable "timeouts_delete" {
+  type = string
+}
+
+variable "encryption_type" {
+  type = string
+}
+
+variable "force_delete" {
+  type = bool
+}

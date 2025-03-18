@@ -28,7 +28,24 @@ module "eks" {
   project                                  = var.project
   environment                              = var.environment
   node_name                                = var.node_name
-  kms_key_arn = aws_kms_alias.kms_alias_eks.arn
+  kms_key_arn                              = aws_kms_alias.kms_alias_eks.arn
 
   tags = data.aws_default_tags.default_global_tags.tags
+}
+
+module "container-registry" {
+
+  source = "./modules/ecr"
+
+  count           = length(var.registry_name)
+  name            = var.registry_name[count.index]
+  timeouts_delete = var.timeouts_delete
+  force_delete    = var.force_delete
+  encryption_type = var.encryption_type
+  account_id      = data.aws_caller_identity.current.account_id
+
+  tags = {
+    Environment = var.environment
+    Terraform   = true
+  }
 }
