@@ -3,6 +3,7 @@
 
 ## Overview
 This Terraform module is designed to simplify the deployment and management of AWS Elastic Kubernetes Service (EKS) clusters. It abstracts away much of the complexity of provisioning EKS clusters with configurable parameters for scalability, security, and reliability.
+
 ![Alt text](docs/eks-with-tf.png)
 
 
