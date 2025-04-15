@@ -1,4 +1,4 @@
-module "vpc_agribora" {
+module "vpc_example" {
   source                 = "./modules/vpc"
   project                = var.project
   environment            = var.environment
@@ -21,8 +21,8 @@ module "eks" {
   desired_instance_count                   = var.desired_instance_count
   instance_type                            = var.instance_type
   cluster_version                          = var.cluster_version
-  vpc_id                                   = module.vpc_agribora.vpc_id
-  private_subnets                          = module.vpc_agribora.private_subnets
+  vpc_id                                   = module.vpc_example.vpc_id
+  private_subnets                          = module.vpc_example.private_subnets
   eks_managed_node_group_defaults_ami_type = var.eks_managed_node_group_defaults_ami_type
   account_id                               = data.aws_caller_identity.current.account_id
   project                                  = var.project
