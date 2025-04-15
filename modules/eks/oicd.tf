@@ -26,7 +26,7 @@ module "secrets_csi_irsa_role" {
   oidc_providers = {
     ex = {
       provider_arn               = module.eks.oidc_provider_arn
-      namespace_service_accounts = ["agribora:secrets-csi-controller-sa"]
+      namespace_service_accounts = ["example:secrets-csi-controller-sa"]
     }
   }
 
